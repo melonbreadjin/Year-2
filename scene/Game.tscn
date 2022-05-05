@@ -1,0 +1,1658 @@
+[gd_scene load_steps=120 format=2]
+
+[ext_resource path="res://addons/rmsmartshape/vertex_properties.gd" type="Script" id=1]
+[ext_resource path="res://addons/rmsmartshape/shapes/point_array.gd" type="Script" id=2]
+[ext_resource path="res://addons/rmsmartshape/shapes/point.gd" type="Script" id=3]
+[ext_resource path="res://addons/rmsmartshape/shapes/shape_closed.gd" type="Script" id=4]
+[ext_resource path="res://assets/brush.png" type="Texture" id=5]
+[ext_resource path="res://addons/rmsmartshape/shapes/shape_open.gd" type="Script" id=6]
+[ext_resource path="res://assets/player.png" type="Texture" id=7]
+[ext_resource path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" type="Script" id=8]
+[ext_resource path="res://addons/rmsmartshape/normal_range.gd" type="Script" id=9]
+[ext_resource path="res://addons/rmsmartshape/materials/edge_material.gd" type="Script" id=10]
+[ext_resource path="res://addons/rmsmartshape/materials/shape_material.gd" type="Script" id=11]
+[ext_resource path="res://assets/bounds.png" type="Texture" id=12]
+[ext_resource path="res://scripts/Game.gd" type="Script" id=13]
+[ext_resource path="res://assets/Robgraves.tres" type="DynamicFontData" id=14]
+[ext_resource path="res://scripts/UI.gd" type="Script" id=15]
+[ext_resource path="res://audio/year2themeintro.wav" type="AudioStream" id=16]
+[ext_resource path="res://audio/year2themeloop.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/logo_alt.png" type="Texture" id=18]
+[ext_resource path="res://assets/bounds_alt.png" type="Texture" id=19]
+
+[sub_resource type="StyleBoxFlat" id=102]
+bg_color = Color( 0.592157, 0.780392, 0.658824, 0.905882 )
+
+[sub_resource type="DynamicFont" id=104]
+size = 64
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=103]
+size = 48
+font_data = ExtResource( 14 )
+
+[sub_resource type="Theme" id=105]
+
+[sub_resource type="DynamicFont" id=107]
+size = 32
+font_data = ExtResource( 14 )
+
+[sub_resource type="StyleBoxEmpty" id=110]
+
+[sub_resource type="StyleBoxEmpty" id=111]
+
+[sub_resource type="StyleBoxFlat" id=106]
+bg_color = Color( 0.592157, 0.780392, 0.658824, 0.843137 )
+
+[sub_resource type="DynamicFont" id=108]
+size = 32
+font_data = ExtResource( 14 )
+
+[sub_resource type="StyleBoxEmpty" id=109]
+
+[sub_resource type="StyleBoxEmpty" id=112]
+
+[sub_resource type="DynamicFont" id=97]
+size = 24
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=98]
+size = 32
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=96]
+size = 32
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=184]
+size = 24
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=187]
+size = 48
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=186]
+size = 64
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=188]
+size = 32
+font_data = ExtResource( 14 )
+
+[sub_resource type="Resource" id=189]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=190]
+script = ExtResource( 3 )
+position = Vector2( 75.3101, 66.9707 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 189 )
+
+[sub_resource type="Resource" id=191]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=192]
+script = ExtResource( 3 )
+position = Vector2( 633.124, 69.2156 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 191 )
+
+[sub_resource type="Resource" id=193]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=194]
+script = ExtResource( 3 )
+position = Vector2( 638.734, 558.375 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 193 )
+
+[sub_resource type="Resource" id=195]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=196]
+script = ExtResource( 3 )
+position = Vector2( 75.3101, 66.9707 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 195 )
+
+[sub_resource type="Resource" id=197]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=198]
+script = ExtResource( 3 )
+position = Vector2( 79.7168, 556.811 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 197 )
+
+[sub_resource type="Resource" id=199]
+script = ExtResource( 2 )
+_points = {
+0: SubResource( 190 ),
+1: SubResource( 192 ),
+2: SubResource( 194 ),
+3: SubResource( 196 ),
+4: SubResource( 198 )
+}
+_point_order = [ 0, 1, 2, 4, 3 ]
+_constraints = {
+[ 0, 3 ]: 15
+}
+_next_key = 4
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 10 )
+textures = [ ExtResource( 5 ) ]
+texture_normals = [  ]
+textures_corner_outer = [  ]
+textures_corner_inner = [  ]
+texture_normals_corner_outer = [  ]
+texture_normals_corner_inner = [  ]
+textures_taper_left = [  ]
+textures_taper_right = [  ]
+texture_normals_taper_left = [  ]
+texture_normals_taper_right = [  ]
+use_corner_texture = true
+use_taper_texture = true
+fit_mode = 0
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 9 )
+begin = 0.0
+distance = 0.0
+edgeRendering = Vector2( 0, 0 )
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 8 )
+edge_material = SubResource( 12 )
+normal_range = SubResource( 13 )
+weld = true
+render = true
+z_index = 0
+z_as_relative = true
+offset = 0.0
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 11 )
+_edge_meta_materials = [ SubResource( 14 ) ]
+fill_textures = [  ]
+fill_texture_normals = [  ]
+fill_texture_z_index = -10
+fill_mesh_offset = 0.0
+render_offset = 0.0
+
+[sub_resource type="Resource" id=200]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=201]
+script = ExtResource( 3 )
+position = Vector2( 152.785, 65.0512 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 200 )
+
+[sub_resource type="Resource" id=202]
+script = ExtResource( 1 )
+texture_idx = 6
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=203]
+script = ExtResource( 3 )
+position = Vector2( 153.319, 558.083 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 202 )
+
+[sub_resource type="Resource" id=204]
+script = ExtResource( 2 )
+_points = {
+0: SubResource( 201 ),
+1: SubResource( 203 )
+}
+_point_order = [ 0, 1 ]
+_constraints = {
+}
+_next_key = 3
+
+[sub_resource type="Resource" id=21]
+script = ExtResource( 10 )
+textures = [ ExtResource( 5 ) ]
+texture_normals = [  ]
+textures_corner_outer = [  ]
+textures_corner_inner = [  ]
+texture_normals_corner_outer = [  ]
+texture_normals_corner_inner = [  ]
+textures_taper_left = [  ]
+textures_taper_right = [  ]
+texture_normals_taper_left = [  ]
+texture_normals_taper_right = [  ]
+use_corner_texture = true
+use_taper_texture = true
+fit_mode = 0
+
+[sub_resource type="Resource" id=22]
+script = ExtResource( 9 )
+begin = 0.0
+distance = 0.0
+edgeRendering = Vector2( 0, 0 )
+
+[sub_resource type="Resource" id=23]
+script = ExtResource( 8 )
+edge_material = SubResource( 21 )
+normal_range = SubResource( 22 )
+weld = true
+render = true
+z_index = 0
+z_as_relative = true
+offset = 0.0
+
+[sub_resource type="Resource" id=24]
+script = ExtResource( 11 )
+_edge_meta_materials = [ SubResource( 23 ) ]
+fill_textures = [  ]
+fill_texture_normals = [  ]
+fill_texture_z_index = -10
+fill_mesh_offset = 0.0
+render_offset = 0.0
+
+[sub_resource type="Resource" id=205]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=206]
+script = ExtResource( 3 )
+position = Vector2( 236.032, 65.9302 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 205 )
+
+[sub_resource type="Resource" id=207]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=208]
+script = ExtResource( 3 )
+position = Vector2( 228.401, 556.497 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 207 )
+
+[sub_resource type="Resource" id=209]
+script = ExtResource( 2 )
+_points = {
+0: SubResource( 206 ),
+1: SubResource( 208 )
+}
+_point_order = [ 0, 1 ]
+_constraints = {
+}
+_next_key = 0
+
+[sub_resource type="Resource" id=210]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=211]
+script = ExtResource( 3 )
+position = Vector2( 312.503, 67.2214 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 210 )
+
+[sub_resource type="Resource" id=212]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=213]
+script = ExtResource( 3 )
+position = Vector2( 305.913, 558.171 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 212 )
+
+[sub_resource type="Resource" id=214]
+script = ExtResource( 2 )
+_points = {
+0: SubResource( 211 ),
+1: SubResource( 213 )
+}
+_point_order = [ 0, 1 ]
+_constraints = {
+}
+_next_key = 0
+
+[sub_resource type="Resource" id=215]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=216]
+script = ExtResource( 3 )
+position = Vector2( 390.757, 65.9302 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 215 )
+
+[sub_resource type="Resource" id=217]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=218]
+script = ExtResource( 3 )
+position = Vector2( 389.495, 557.32 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 217 )
+
+[sub_resource type="Resource" id=219]
+script = ExtResource( 2 )
+_points = {
+0: SubResource( 216 ),
+1: SubResource( 218 )
+}
+_point_order = [ 0, 1 ]
+_constraints = {
+}
+_next_key = 0
+
+[sub_resource type="Resource" id=220]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=221]
+script = ExtResource( 3 )
+position = Vector2( 471.483, 69.2938 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 220 )
+
+[sub_resource type="Resource" id=222]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=223]
+script = ExtResource( 3 )
+position = Vector2( 473.163, 558.676 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 222 )
+
+[sub_resource type="Resource" id=224]
+script = ExtResource( 2 )
+_points = {
+0: SubResource( 221 ),
+1: SubResource( 223 )
+}
+_point_order = [ 0, 1 ]
+_constraints = {
+}
+_next_key = 0
+
+[sub_resource type="Resource" id=225]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=226]
+script = ExtResource( 3 )
+position = Vector2( 550.527, 65.9302 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 225 )
+
+[sub_resource type="Resource" id=227]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=228]
+script = ExtResource( 3 )
+position = Vector2( 553.656, 559.346 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 227 )
+
+[sub_resource type="Resource" id=229]
+script = ExtResource( 2 )
+_points = {
+0: SubResource( 226 ),
+1: SubResource( 228 )
+}
+_point_order = [ 0, 1 ]
+_constraints = {
+}
+_next_key = 0
+
+[sub_resource type="Resource" id=230]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=231]
+script = ExtResource( 3 )
+position = Vector2( 74.4835, 134.348 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 230 )
+
+[sub_resource type="Resource" id=232]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=233]
+script = ExtResource( 3 )
+position = Vector2( 634.03, 137.838 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 232 )
+
+[sub_resource type="Resource" id=234]
+script = ExtResource( 2 )
+_points = {
+0: SubResource( 231 ),
+1: SubResource( 233 )
+}
+_point_order = [ 0, 1 ]
+_constraints = {
+}
+_next_key = 0
+
+[sub_resource type="Resource" id=235]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=236]
+script = ExtResource( 3 )
+position = Vector2( 75.1254, 209.301 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 235 )
+
+[sub_resource type="Resource" id=237]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=238]
+script = ExtResource( 3 )
+position = Vector2( 636.025, 211.752 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 237 )
+
+[sub_resource type="Resource" id=239]
+script = ExtResource( 2 )
+_points = {
+0: SubResource( 236 ),
+1: SubResource( 238 )
+}
+_point_order = [ 0, 1 ]
+_constraints = {
+}
+_next_key = 0
+
+[sub_resource type="Resource" id=240]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=241]
+script = ExtResource( 3 )
+position = Vector2( 75.0031, 285.668 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 240 )
+
+[sub_resource type="Resource" id=242]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=243]
+script = ExtResource( 3 )
+position = Vector2( 635.562, 283.877 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 242 )
+
+[sub_resource type="Resource" id=244]
+script = ExtResource( 2 )
+_points = {
+0: SubResource( 241 ),
+1: SubResource( 243 )
+}
+_point_order = [ 0, 1 ]
+_constraints = {
+}
+_next_key = 0
+
+[sub_resource type="Resource" id=245]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=246]
+script = ExtResource( 3 )
+position = Vector2( 77.9888, 356.795 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 245 )
+
+[sub_resource type="Resource" id=247]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=248]
+script = ExtResource( 3 )
+position = Vector2( 636.908, 355.16 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 247 )
+
+[sub_resource type="Resource" id=249]
+script = ExtResource( 2 )
+_points = {
+0: SubResource( 246 ),
+1: SubResource( 248 )
+}
+_point_order = [ 0, 1 ]
+_constraints = {
+}
+_next_key = 0
+
+[sub_resource type="Resource" id=250]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=251]
+script = ExtResource( 3 )
+position = Vector2( 78.3708, 426.027 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 250 )
+
+[sub_resource type="Resource" id=252]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=253]
+script = ExtResource( 3 )
+position = Vector2( 638.921, 425.112 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 252 )
+
+[sub_resource type="Resource" id=254]
+script = ExtResource( 2 )
+_points = {
+0: SubResource( 251 ),
+1: SubResource( 253 )
+}
+_point_order = [ 0, 1 ]
+_constraints = {
+}
+_next_key = 0
+
+[sub_resource type="Resource" id=255]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=256]
+script = ExtResource( 3 )
+position = Vector2( 76.7631, 493.721 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 255 )
+
+[sub_resource type="Resource" id=257]
+script = ExtResource( 1 )
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id=258]
+script = ExtResource( 3 )
+position = Vector2( 639.944, 492.288 )
+point_in = Vector2( 0, 0 )
+point_out = Vector2( 0, 0 )
+properties = SubResource( 257 )
+
+[sub_resource type="Resource" id=259]
+script = ExtResource( 2 )
+_points = {
+0: SubResource( 256 ),
+1: SubResource( 258 )
+}
+_point_order = [ 0, 1 ]
+_constraints = {
+}
+_next_key = 0
+
+[sub_resource type="SegmentShape2D" id=99]
+a = Vector2( -2400, 0 )
+b = Vector2( 2400, 0 )
+
+[sub_resource type="SegmentShape2D" id=100]
+a = Vector2( 0, -2400 )
+b = Vector2( 0, 2400 )
+
+[sub_resource type="CircleShape2D" id=101]
+radius = 500.0
+
+[node name="Game" type="Node"]
+script = ExtResource( 13 )
+
+[node name="GameoverDialog" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="BGPanel" type="Panel" parent="GameoverDialog"]
+visible = false
+modulate = Color( 0.592157, 0.780392, 0.658824, 0.882353 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="GameoverDialog"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 212.0
+margin_top = 100.0
+margin_right = -212.0
+margin_bottom = -100.0
+texture = ExtResource( 12 )
+
+[node name="Panel" type="Panel" parent="GameoverDialog/NinePatchRect"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 31.0
+margin_top = 17.0
+margin_right = -33.0
+margin_bottom = -20.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 102 )
+
+[node name="Label" type="RichTextLabel" parent="GameoverDialog/NinePatchRect/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/bold_font = SubResource( 104 )
+custom_fonts/normal_font = SubResource( 103 )
+bbcode_enabled = true
+bbcode_text = "[center][b]GAME OVER[/b]
+
+Tools Used : 000
+Total Turns : 000[/center]"
+text = "GAME OVER
+
+Tools Used : 000
+Total Turns : 000"
+
+[node name="RetryButton" type="NinePatchRect" parent="GameoverDialog/NinePatchRect/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 54.0
+margin_top = 249.0
+margin_right = -289.0
+margin_bottom = -29.0
+theme = SubResource( 105 )
+texture = ExtResource( 12 )
+
+[node name="RetryButton" type="Button" parent="GameoverDialog/NinePatchRect/Panel/RetryButton"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 107 )
+custom_styles/hover = SubResource( 110 )
+custom_styles/pressed = SubResource( 111 )
+custom_styles/normal = SubResource( 106 )
+text = "RETRY"
+
+[node name="MenuButton" type="NinePatchRect" parent="GameoverDialog/NinePatchRect/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 291.0
+margin_top = 249.0
+margin_right = -61.0
+margin_bottom = -29.0
+texture = ExtResource( 12 )
+
+[node name="MenuButton" type="Button" parent="GameoverDialog/NinePatchRect/Panel/MenuButton"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 108 )
+custom_styles/hover = SubResource( 109 )
+custom_styles/pressed = SubResource( 112 )
+custom_styles/normal = SubResource( 106 )
+text = "MENU"
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 15 )
+
+[node name="Card0" type="NinePatchRect" parent="UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 56.0
+margin_top = 114.0
+margin_right = 397.0
+margin_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 12 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="Button0" type="Button" parent="UI/Card0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 97 )
+flat = true
+
+[node name="Label" type="Label" parent="UI/Card0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 98 )
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="Card1" type="NinePatchRect" parent="UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 56.0
+margin_top = 214.0
+margin_right = 397.0
+margin_bottom = 304.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 12 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="Button1" type="Button" parent="UI/Card1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 97 )
+flat = true
+
+[node name="Label" type="Label" parent="UI/Card1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 98 )
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="Card2" type="NinePatchRect" parent="UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 56.0
+margin_top = 314.0
+margin_right = 397.0
+margin_bottom = 404.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 12 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="Button2" type="Button" parent="UI/Card2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 97 )
+flat = true
+
+[node name="Label" type="Label" parent="UI/Card2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 98 )
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="ActionCountLabel" type="Label" parent="UI"]
+anchor_left = 0.644
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.455994
+margin_top = -175.0
+grow_horizontal = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 96 )
+text = "Total turns : 0"
+align = 1
+
+[node name="Text" type="Label" parent="UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -365.0
+margin_bottom = 103.0
+grow_horizontal = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 96 )
+text = "Choose Tool:"
+align = 1
+valign = 2
+
+[node name="Text2" type="Label" parent="UI"]
+margin_right = 530.0
+margin_bottom = 57.0
+grow_horizontal = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 96 )
+text = "     Objective : Clean the lawn"
+valign = 2
+
+[node name="B_W" type="NinePatchRect" parent="UI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -210.0
+margin_top = -131.0
+margin_right = -146.0
+margin_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 12 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Button2" type="Button" parent="UI/B_W"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 97 )
+flat = true
+
+[node name="Label" type="Label" parent="UI/B_W"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 98 )
+text = "W"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="B_A" type="NinePatchRect" parent="UI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -261.0
+margin_top = -82.0
+margin_right = -197.0
+margin_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 12 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Button2" type="Button" parent="UI/B_A"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 97 )
+flat = true
+
+[node name="Label" type="Label" parent="UI/B_A"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 98 )
+text = "A"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="B_S" type="NinePatchRect" parent="UI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -210.0
+margin_top = -82.0
+margin_right = -146.0
+margin_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 12 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Button2" type="Button" parent="UI/B_S"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 97 )
+flat = true
+
+[node name="Label" type="Label" parent="UI/B_S"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 98 )
+text = "S"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="B_D" type="NinePatchRect" parent="UI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -159.0
+margin_top = -82.0
+margin_right = -95.0
+margin_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 12 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Button2" type="Button" parent="UI/B_D"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 97 )
+flat = true
+
+[node name="Label" type="Label" parent="UI/B_D"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 98 )
+text = "D"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="EndTurnButton" type="TextureButton" parent="UI"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -40.0
+
+[node name="MainMenu" type="Panel" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="UI/MainMenu"]
+anchor_right = 1.0
+margin_bottom = 360.0
+texture = ExtResource( 18 )
+stretch_mode = 6
+
+[node name="Label" type="RichTextLabel" parent="UI/MainMenu"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -44.0
+custom_fonts/normal_font = SubResource( 184 )
+bbcode_enabled = true
+bbcode_text = "[center]PRESS [color=#97c7a8][PAGE UP][/color] / [color=#97c7a8][PAGE DOWN][/color] TO ADJUST VOLUME[/center]"
+text = "PRESS [PAGE UP] / [PAGE DOWN] TO ADJUST VOLUME"
+
+[node name="Daily" type="NinePatchRect" parent="UI/MainMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -240.0
+margin_top = 20.0
+margin_right = 246.0
+margin_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 19 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DailyButton" type="Button" parent="UI/MainMenu/Daily"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 97 )
+flat = true
+
+[node name="Label" type="Label" parent="UI/MainMenu/Daily"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 187 )
+text = "DAILY CHALLENGE"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="Random" type="NinePatchRect" parent="UI/MainMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -239.0
+margin_top = 126.0
+margin_right = 247.0
+margin_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 19 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RandomButton" type="Button" parent="UI/MainMenu/Random"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 97 )
+flat = true
+
+[node name="Label" type="Label" parent="UI/MainMenu/Random"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 186 )
+text = "RANDOMIZER"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="C" type="NinePatchRect" parent="UI/MainMenu"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = 128.0
+grow_vertical = 0
+texture = ExtResource( 19 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CButton" type="Button" parent="UI/MainMenu/C"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 97 )
+flat = true
+
+[node name="Label" type="Label" parent="UI/MainMenu/C"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 188 )
+text = "C"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+uppercase = true
+
+[node name="Grid" type="Node" parent="."]
+
+[node name="E" type="Node2D" parent="Grid"]
+script = ExtResource( 4 )
+_points = SubResource( 199 )
+material_overrides = {
+}
+shape_material = SubResource( 15 )
+tessellation_stages = 5
+tessellation_tolerence = 4.0
+flip_edges = false
+render_edges = true
+collision_size = 32.0
+collision_offset = 0.0
+collision_polygon_node_path = NodePath("")
+
+[node name="V" type="Node" parent="Grid"]
+
+[node name="1" type="Node2D" parent="Grid/V"]
+script = ExtResource( 6 )
+_points = SubResource( 204 )
+material_overrides = {
+}
+shape_material = SubResource( 24 )
+tessellation_stages = 5
+tessellation_tolerence = 4.0
+flip_edges = false
+render_edges = true
+collision_size = 32.0
+collision_offset = 0.0
+collision_polygon_node_path = NodePath("")
+
+[node name="2" type="Node2D" parent="Grid/V"]
+script = ExtResource( 6 )
+_points = SubResource( 209 )
+material_overrides = {
+}
+shape_material = SubResource( 24 )
+tessellation_stages = 5
+tessellation_tolerence = 4.0
+flip_edges = false
+render_edges = true
+collision_size = 32.0
+collision_offset = 0.0
+collision_polygon_node_path = NodePath("")
+
+[node name="3" type="Node2D" parent="Grid/V"]
+script = ExtResource( 6 )
+_points = SubResource( 214 )
+material_overrides = {
+}
+shape_material = SubResource( 24 )
+tessellation_stages = 5
+tessellation_tolerence = 4.0
+flip_edges = false
+render_edges = true
+collision_size = 32.0
+collision_offset = 0.0
+collision_polygon_node_path = NodePath("")
+
+[node name="4" type="Node2D" parent="Grid/V"]
+script = ExtResource( 6 )
+_points = SubResource( 219 )
+material_overrides = {
+}
+shape_material = SubResource( 24 )
+tessellation_stages = 5
+tessellation_tolerence = 4.0
+flip_edges = false
+render_edges = true
+collision_size = 32.0
+collision_offset = 0.0
+collision_polygon_node_path = NodePath("")
+
+[node name="5" type="Node2D" parent="Grid/V"]
+script = ExtResource( 6 )
+_points = SubResource( 224 )
+material_overrides = {
+}
+shape_material = SubResource( 24 )
+tessellation_stages = 5
+tessellation_tolerence = 4.0
+flip_edges = false
+render_edges = true
+collision_size = 32.0
+collision_offset = 0.0
+collision_polygon_node_path = NodePath("")
+
+[node name="6" type="Node2D" parent="Grid/V"]
+script = ExtResource( 6 )
+_points = SubResource( 229 )
+material_overrides = {
+}
+shape_material = SubResource( 24 )
+tessellation_stages = 5
+tessellation_tolerence = 4.0
+flip_edges = false
+render_edges = true
+collision_size = 32.0
+collision_offset = 0.0
+collision_polygon_node_path = NodePath("")
+
+[node name="H" type="Node" parent="Grid"]
+
+[node name="1" type="Node2D" parent="Grid/H"]
+script = ExtResource( 6 )
+_points = SubResource( 234 )
+material_overrides = {
+}
+shape_material = SubResource( 24 )
+tessellation_stages = 5
+tessellation_tolerence = 4.0
+flip_edges = false
+render_edges = true
+collision_size = 32.0
+collision_offset = 0.0
+collision_polygon_node_path = NodePath("")
+
+[node name="2" type="Node2D" parent="Grid/H"]
+script = ExtResource( 6 )
+_points = SubResource( 239 )
+material_overrides = {
+}
+shape_material = SubResource( 24 )
+tessellation_stages = 5
+tessellation_tolerence = 4.0
+flip_edges = false
+render_edges = true
+collision_size = 32.0
+collision_offset = 0.0
+collision_polygon_node_path = NodePath("")
+
+[node name="3" type="Node2D" parent="Grid/H"]
+script = ExtResource( 6 )
+_points = SubResource( 244 )
+material_overrides = {
+}
+shape_material = SubResource( 24 )
+tessellation_stages = 5
+tessellation_tolerence = 4.0
+flip_edges = false
+render_edges = true
+collision_size = 32.0
+collision_offset = 0.0
+collision_polygon_node_path = NodePath("")
+
+[node name="4" type="Node2D" parent="Grid/H"]
+script = ExtResource( 6 )
+_points = SubResource( 249 )
+material_overrides = {
+}
+shape_material = SubResource( 24 )
+tessellation_stages = 5
+tessellation_tolerence = 4.0
+flip_edges = false
+render_edges = true
+collision_size = 32.0
+collision_offset = 0.0
+collision_polygon_node_path = NodePath("")
+
+[node name="5" type="Node2D" parent="Grid/H"]
+script = ExtResource( 6 )
+_points = SubResource( 254 )
+material_overrides = {
+}
+shape_material = SubResource( 24 )
+tessellation_stages = 5
+tessellation_tolerence = 4.0
+flip_edges = false
+render_edges = true
+collision_size = 32.0
+collision_offset = 0.0
+collision_polygon_node_path = NodePath("")
+
+[node name="6" type="Node2D" parent="Grid/H"]
+script = ExtResource( 6 )
+_points = SubResource( 259 )
+material_overrides = {
+}
+shape_material = SubResource( 24 )
+tessellation_stages = 5
+tessellation_tolerence = 4.0
+flip_edges = false
+render_edges = true
+collision_size = 32.0
+collision_offset = 0.0
+collision_polygon_node_path = NodePath("")
+
+[node name="P" type="Node" parent="Grid"]
+
+[node name="00" type="Position2D" parent="Grid/P"]
+position = Vector2( 114, 98 )
+
+[node name="01" type="Position2D" parent="Grid/P"]
+position = Vector2( 198, 98 )
+
+[node name="02" type="Position2D" parent="Grid/P"]
+position = Vector2( 275, 99 )
+
+[node name="03" type="Position2D" parent="Grid/P"]
+position = Vector2( 353, 98 )
+
+[node name="04" type="Position2D" parent="Grid/P"]
+position = Vector2( 433, 98 )
+
+[node name="05" type="Position2D" parent="Grid/P"]
+position = Vector2( 512, 98 )
+
+[node name="06" type="Position2D" parent="Grid/P"]
+position = Vector2( 593, 100 )
+
+[node name="07" type="Position2D" parent="Grid/P"]
+position = Vector2( 114, 171 )
+
+[node name="08" type="Position2D" parent="Grid/P"]
+position = Vector2( 198, 171 )
+
+[node name="09" type="Position2D" parent="Grid/P"]
+position = Vector2( 275, 172 )
+
+[node name="10" type="Position2D" parent="Grid/P"]
+position = Vector2( 353, 171 )
+
+[node name="11" type="Position2D" parent="Grid/P"]
+position = Vector2( 433, 171 )
+
+[node name="12" type="Position2D" parent="Grid/P"]
+position = Vector2( 512, 171 )
+
+[node name="13" type="Position2D" parent="Grid/P"]
+position = Vector2( 593, 173 )
+
+[node name="14" type="Position2D" parent="Grid/P"]
+position = Vector2( 114, 245 )
+
+[node name="15" type="Position2D" parent="Grid/P"]
+position = Vector2( 198, 245 )
+
+[node name="16" type="Position2D" parent="Grid/P"]
+position = Vector2( 275, 246 )
+
+[node name="17" type="Position2D" parent="Grid/P"]
+position = Vector2( 353, 245 )
+
+[node name="18" type="Position2D" parent="Grid/P"]
+position = Vector2( 433, 245 )
+
+[node name="19" type="Position2D" parent="Grid/P"]
+position = Vector2( 512, 245 )
+
+[node name="20" type="Position2D" parent="Grid/P"]
+position = Vector2( 593, 247 )
+
+[node name="21" type="Position2D" parent="Grid/P"]
+position = Vector2( 116, 319 )
+
+[node name="22" type="Position2D" parent="Grid/P"]
+position = Vector2( 200, 319 )
+
+[node name="23" type="Position2D" parent="Grid/P"]
+position = Vector2( 277, 320 )
+
+[node name="24" type="Position2D" parent="Grid/P"]
+position = Vector2( 355, 319 )
+
+[node name="25" type="Position2D" parent="Grid/P"]
+position = Vector2( 435, 319 )
+
+[node name="26" type="Position2D" parent="Grid/P"]
+position = Vector2( 514, 319 )
+
+[node name="27" type="Position2D" parent="Grid/P"]
+position = Vector2( 595, 321 )
+
+[node name="28" type="Position2D" parent="Grid/P"]
+position = Vector2( 111, 387 )
+
+[node name="29" type="Position2D" parent="Grid/P"]
+position = Vector2( 195, 387 )
+
+[node name="30" type="Position2D" parent="Grid/P"]
+position = Vector2( 272, 388 )
+
+[node name="31" type="Position2D" parent="Grid/P"]
+position = Vector2( 350, 387 )
+
+[node name="32" type="Position2D" parent="Grid/P"]
+position = Vector2( 430, 387 )
+
+[node name="33" type="Position2D" parent="Grid/P"]
+position = Vector2( 509, 387 )
+
+[node name="34" type="Position2D" parent="Grid/P"]
+position = Vector2( 590, 389 )
+
+[node name="35" type="Position2D" parent="Grid/P"]
+position = Vector2( 111, 458 )
+
+[node name="36" type="Position2D" parent="Grid/P"]
+position = Vector2( 195, 458 )
+
+[node name="37" type="Position2D" parent="Grid/P"]
+position = Vector2( 272, 459 )
+
+[node name="38" type="Position2D" parent="Grid/P"]
+position = Vector2( 350, 458 )
+
+[node name="39" type="Position2D" parent="Grid/P"]
+position = Vector2( 430, 458 )
+
+[node name="40" type="Position2D" parent="Grid/P"]
+position = Vector2( 509, 458 )
+
+[node name="41" type="Position2D" parent="Grid/P"]
+position = Vector2( 590, 460 )
+
+[node name="42" type="Position2D" parent="Grid/P"]
+position = Vector2( 112, 525 )
+
+[node name="43" type="Position2D" parent="Grid/P"]
+position = Vector2( 196, 525 )
+
+[node name="44" type="Position2D" parent="Grid/P"]
+position = Vector2( 273, 526 )
+
+[node name="45" type="Position2D" parent="Grid/P"]
+position = Vector2( 351, 525 )
+
+[node name="46" type="Position2D" parent="Grid/P"]
+position = Vector2( 431, 525 )
+
+[node name="47" type="Position2D" parent="Grid/P"]
+position = Vector2( 510, 525 )
+
+[node name="48" type="Position2D" parent="Grid/P"]
+position = Vector2( 591, 527 )
+
+[node name="Player" type="Sprite" parent="."]
+position = Vector2( 351, 320 )
+scale = Vector2( 0.25, 0.25 )
+z_index = 1
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area" type="Area2D" parent="Player"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="H" type="CollisionShape2D" parent="Player/Area"]
+shape = SubResource( 99 )
+disabled = true
+
+[node name="V" type="CollisionShape2D" parent="Player/Area"]
+shape = SubResource( 100 )
+disabled = true
+
+[node name="A" type="CollisionShape2D" parent="Player/Area"]
+shape = SubResource( 101 )
+disabled = true
+
+[node name="Pieces" type="Node" parent="."]
+
+[node name="Pointer" type="Position2D" parent="."]
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
+
+[node name="MusicIntro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+bus = "BGM"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+
+[connection signal="pressed" from="GameoverDialog/NinePatchRect/Panel/RetryButton/RetryButton" to="." method="_on_RetryButton_pressed"]
+[connection signal="pressed" from="GameoverDialog/NinePatchRect/Panel/MenuButton/MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="mouse_entered" from="UI/Card0/Button0" to="UI" method="_on_Button0_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Card0/Button0" to="UI" method="_on_Button0_mouse_exited"]
+[connection signal="pressed" from="UI/Card0/Button0" to="UI" method="_on_Button0_pressed"]
+[connection signal="mouse_entered" from="UI/Card1/Button1" to="UI" method="_on_Button1_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Card1/Button1" to="UI" method="_on_Button1_mouse_exited"]
+[connection signal="pressed" from="UI/Card1/Button1" to="UI" method="_on_Button1_pressed"]
+[connection signal="mouse_entered" from="UI/Card2/Button2" to="UI" method="_on_Button2_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Card2/Button2" to="UI" method="_on_Button2_mouse_exited"]
+[connection signal="pressed" from="UI/Card2/Button2" to="UI" method="_on_Button2_pressed"]
+[connection signal="pressed" from="UI/MainMenu/Daily/DailyButton" to="." method="_on_DailyButton_pressed"]
+[connection signal="pressed" from="UI/MainMenu/Random/RandomButton" to="." method="_on_RandomButton_pressed"]
+[connection signal="mouse_entered" from="UI/MainMenu/C/CButton" to="." method="_on_CButton_mouse_entered"]
+[connection signal="body_entered" from="Player/Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Player/Area" to="." method="_on_Area_body_exited"]
+[connection signal="finished" from="MusicIntro" to="." method="_on_MusicIntro_finished"]

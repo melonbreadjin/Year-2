@@ -18,3 +18,7 @@ func set_type(type : int) -> void:
 	
 	$StaticBody2D.collision_layer = 1 << (type)
 	$StaticBody2D.collision_mask = 1 << (type)
+
+
+func _on_DespawnTimer_timeout():
+	queue_free()

@@ -93,7 +93,7 @@ func generate_cards(count : int = 3) -> void:
 			var value = Globals.arr_cards[key]
 			cards.append(value)
 			
-			Globals.arr_cards.erase(key)
+			var _v = Globals.arr_cards.erase(key)
 	
 	Globals.emit_signal("sgn_draw_cards", cards)
 
@@ -127,9 +127,11 @@ func _on_Area_body_exited(body):
 	sprite.scale = Vector2(0.25, 0.25)
 	
 	var state_machine = sprite.get_node("AnimationTree")["parameters/playback"]
-	state_machine.travel("idle")
+	yield(get_tree().create_timer(0.1), "timeout")
+	if state_machine.get_current_node() == "highlighted":
+		state_machine.travel("idle")
 
-func on_sgn_selection(cards : Array) -> void:
+func on_sgn_selection(cards : Array, selected_card : Array) -> void:
 	if not is_ingame:
 		return
 	
@@ -140,7 +142,18 @@ func on_sgn_selection(cards : Array) -> void:
 	
 	for body in bodies:
 		play_audio(a_clear)
-		body.get_parent().queue_free()
+		if selected_card[2] == Globals.piece_type.GRASS:
+			var state_machine = body.get_parent().get_node("AnimationTree")["parameters/playback"]
+			state_machine.travel("grass_break")
+			body.get_parent().get_node("DespawnTimer").start()
+		elif selected_card[2] == Globals.piece_type.WOOD:
+			var state_machine = body.get_parent().get_node("AnimationTree")["parameters/playback"]
+			state_machine.travel("wood_break")
+			body.get_parent().get_node("DespawnTimer").start()
+		elif selected_card[2] == Globals.piece_type.ROCK:
+			var state_machine = body.get_parent().get_node("AnimationTree")["parameters/playback"]
+			state_machine.travel("rock_break")
+			body.get_parent().get_node("DespawnTimer").start()
 	
 	if bodies.size() == 0:
 		play_audio(a_click)

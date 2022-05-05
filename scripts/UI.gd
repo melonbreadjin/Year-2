@@ -62,9 +62,9 @@ func _on_Button_pressed() -> void:
 	$Card2/Button2.disabled = true
 	
 	Globals.emit_signal("sgn_highlight_end")
-	Globals.emit_signal("sgn_selection", shown_cards)
+	Globals.emit_signal("sgn_selection", shown_cards, selected_card)
 
-func _process(delta : float) -> void:
+func _process(_delta : float) -> void:
 	if card0_hiding and $Card0.rect_position.x < right_position:
 		$Card0.rect_position.x = lerp($Card0.rect_position.x, right_position, 0.05)
 	elif not card0_hiding and $Card0.rect_position.x > left_position:

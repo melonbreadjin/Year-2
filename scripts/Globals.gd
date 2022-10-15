@@ -1,6 +1,7 @@
 extends Node
 
 signal sgn_update_turn
+signal sgn_update_tools
 signal sgn_draw_cards
 
 signal sgn_highlight_start
@@ -13,6 +14,13 @@ signal sgn_piece_collision_end
 var texture_grass = preload("res://assets/grass.png")
 var texture_rock = preload("res://assets/rock.png")
 var texture_wood = preload("res://assets/wood.png")
+
+var icon_3x3 = preload("res://assets/icon_3x3.png")
+var icon_h = preload("res://assets/icon_h.png")
+var icon_v = preload("res://assets/icon_v.png")
+var icon_pick = preload("res://assets/icon_pick.png")
+var icon_axe = preload("res://assets/icon_axe.png")
+var icon_scythe = preload("res://assets/icon_scythe.png")
 
 var piece_ref = preload("res://scene/Piece.tscn")
 

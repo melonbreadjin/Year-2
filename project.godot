@@ -184,7 +184,8 @@ _global_script_class_icons={
 
 config/name="Cleaning"
 run/main_scene="res://scene/Game.tscn"
-config/icon="res://icon.png"
+config/icon="res://ico.png"
+config/windows_native_icon="res://ico.ico"
 
 [autoload]
 
@@ -205,6 +206,10 @@ enabled=PoolStringArray( "res://addons/gut/plugin.cfg", "res://addons/rmsmartsha
 [gdnative]
 
 singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
+
+[global]
+
+icon=true
 
 [input]
 

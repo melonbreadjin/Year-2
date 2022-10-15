@@ -20,29 +20,44 @@ var daily_game : bool
 
 var _sgn
 
+var is_debug : bool
 var is_ingame : bool
 var is_mainmenu_visible : bool
 
+var player_state_machine
+
 func _ready() -> void:
-	$MusicIntro.play()
+	if OS.is_debug_build():
+		is_debug = true
+	else:
+		is_debug = false
+		$MusicIntro.play()
 	
 	is_ingame = false
 	is_mainmenu_visible = true
 	
-	player = $Player
 	_sgn = Globals.connect("sgn_update_turn", self, "on_sgn_update_turn")
+	_sgn = Globals.connect("sgn_update_tools", self, "on_sgn_update_tools")
 	_sgn = Globals.connect("sgn_highlight_start", self, "on_sgn_highlight_start")
 	_sgn = Globals.connect("sgn_highlight_end", self, "on_sgn_highlight_end")
 	_sgn = Globals.connect("sgn_selection", self, "on_sgn_selection")
+	
+	player = $Player
+	player_state_machine = player.get_node("AnimationTree")["parameters/playback"]
 
 func new_game(is_daily : bool) -> void:
+	if is_ingame:
+		return
+	
 	turn = 0
 	tools_used = 0
 	is_ingame = true
 	daily_game = is_daily
 	
-	$UI/ActionCountLabel.text = "Total turns : 0"
-	$UI/ActionCountLabel.visible = true
+	$UI/TurnCountLabel.bbcode_text = "[center]Total turns : 0[/center]"
+	$UI/ToolUsedLabel.bbcode_text = "[center]Tools used : 0[/center]"
+	$UI/TurnCountLabel.visible = true
+	$UI/ToolUsedLabel.visible = true
 	Globals.arr_cards = Globals.arr_deck.duplicate()
 	
 	if is_daily:
@@ -100,6 +115,10 @@ func generate_cards(count : int = 3) -> void:
 func on_sgn_update_turn(cost : int) -> void:
 	turn += cost
 
+func on_sgn_update_tools(cost : int) -> void:
+	Globals.emit_signal("sgn_update_turn", 1)
+	tools_used += cost
+
 func on_sgn_highlight_start(card : Array) -> void:
 	$Player/Area.collision_layer = 1 << card[2]
 	
@@ -135,10 +154,14 @@ func on_sgn_selection(cards : Array, selected_card : Array) -> void:
 	if not is_ingame:
 		return
 	
-	Globals.emit_signal("sgn_update_turn", 5)
-	tools_used += 1
+	Globals.emit_signal("sgn_update_tools", 1)
 	
 	var bodies = $Player/Area.get_overlapping_bodies()
+	
+	if selected_card[1] == Globals.target_type.AREA_3x3:
+		player_state_machine.travel("swing_AOE")
+	else:
+		player_state_machine.travel("swing_H")
 	
 	for body in bodies:
 		play_audio(a_clear)
@@ -183,21 +206,25 @@ func _input(event : InputEvent) -> void:
 		Globals.emit_signal("sgn_update_turn", 1)
 		player.flip_h = true
 		play_audio(a_move)
+		player_state_machine.travel("hop")
 	elif event.is_action_pressed("player_left") and player_pos.x - 1 >= 0:
 		player_pos.x -= 1
 		Globals.emit_signal("sgn_update_turn", 1)
 		player.flip_h = true
 		play_audio(a_move)
+		player_state_machine.travel("hop")
 	elif event.is_action_pressed("player_down") and player_pos.y + 1 < GRID_SIZE.y:
 		player_pos.y += 1
 		Globals.emit_signal("sgn_update_turn", 1)
 		player.flip_h = false
 		play_audio(a_move)
+		player_state_machine.travel("hop")
 	elif event.is_action_pressed("player_right") and player_pos.x + 1 < GRID_SIZE.x:
 		player_pos.x += 1
 		Globals.emit_signal("sgn_update_turn", 1)
 		player.flip_h = false
 		play_audio(a_move)
+		player_state_machine.travel("hop")
 	
 	board_set("player", player_pos)
 
@@ -209,7 +236,8 @@ func play_audio(audio) -> void:
 func game_over() -> void:
 	is_ingame = false
 	
-	$UI/ActionCountLabel.visible = false
+	$UI/TurnCountLabel.visible = false
+	$UI/ToolUsedLabel.visible = false
 	
 	$GameoverDialog/NinePatchRect/Panel/Label.bbcode_text = "[center][b]GAME OVER[/b]\n\nTools Used : %d\nTotal Turns : %d[/center]" % [tools_used, turn]
 	$GameoverDialog/NinePatchRect.visible = true
@@ -271,4 +299,48 @@ func _on_CButton_mouse_entered():
 	$UI/MainMenu/C/Label.margin_left = 18
 	$UI/MainMenu/C/Label.margin_right = -18
 	
-	$UI/MainMenu/C/Label.text = "í ½í°”í ½í°”í ½í°”í ½í°”í ½í°”í ½í°”í ½í°”Made by melonbreadjin\n\nFont : RobGraves\nby Kevin Richey"
+	$UI/MainMenu/C/Label.text = "ðŸ”ðŸ”ðŸ”ðŸ”ðŸ”ðŸ”ðŸ”v1.0 POST JAM\nMade by melonbreadjin\n\nFont : RobGraves\nby Kevin Richey"
+
+
+func _on_Button_W_pressed():
+	if player_pos.y - 1 >= 0:
+		player_pos.y -= 1
+		Globals.emit_signal("sgn_update_turn", 1)
+		player.flip_h = true
+		play_audio(a_move)
+		player_state_machine.travel("hop")
+	
+		board_set("player", player_pos)
+
+
+func _on_Button_A_pressed():
+	if player_pos.x - 1 >= 0:
+		player_pos.x -= 1
+		Globals.emit_signal("sgn_update_turn", 1)
+		player.flip_h = true
+		play_audio(a_move)
+		player_state_machine.travel("hop")
+		
+		board_set("player", player_pos)
+
+
+func _on_Button_S_pressed():
+	if player_pos.y + 1 < GRID_SIZE.y:
+		player_pos.y += 1
+		Globals.emit_signal("sgn_update_turn", 1)
+		player.flip_h = false
+		play_audio(a_move)
+		player_state_machine.travel("hop")
+		
+		board_set("player", player_pos)
+
+
+func _on_Button_D_pressed():
+	if player_pos.x + 1 < GRID_SIZE.x:
+		player_pos.x += 1
+		Globals.emit_signal("sgn_update_turn", 1)
+		player.flip_h = false
+		play_audio(a_move)
+		player_state_machine.travel("hop")
+		
+		board_set("player", player_pos)

@@ -4,6 +4,10 @@ onready var a_clear = preload("res://audio/hitHurt.wav")
 onready var a_move = preload("res://audio/jump.wav")
 onready var a_click = preload("res://audio/pickupCoin.wav")
 
+onready var a_grass = preload("res://audio/grass.mp3")
+onready var a_wood = preload("res://audio/wood.mp3")
+onready var a_rock = preload("res://audio/rock.mp3")
+
 export(Array, Array, float) var position
 
 const GRID_SIZE : Vector2 = Vector2(7, 7)
@@ -164,19 +168,23 @@ func on_sgn_selection(cards : Array, selected_card : Array) -> void:
 		player_state_machine.travel("swing_H")
 	
 	for body in bodies:
-		play_audio(a_clear)
 		if selected_card[2] == Globals.piece_type.GRASS:
+			play_audio(a_grass)
 			var state_machine = body.get_parent().get_node("AnimationTree")["parameters/playback"]
 			state_machine.travel("grass_break")
 			body.get_parent().get_node("DespawnTimer").start()
 		elif selected_card[2] == Globals.piece_type.WOOD:
+			play_audio(a_wood)
 			var state_machine = body.get_parent().get_node("AnimationTree")["parameters/playback"]
 			state_machine.travel("wood_break")
 			body.get_parent().get_node("DespawnTimer").start()
 		elif selected_card[2] == Globals.piece_type.ROCK:
+			play_audio(a_rock)
 			var state_machine = body.get_parent().get_node("AnimationTree")["parameters/playback"]
 			state_machine.travel("rock_break")
 			body.get_parent().get_node("DespawnTimer").start()
+		
+		yield(get_tree().create_timer(0.135), "timeout")
 	
 	if bodies.size() == 0:
 		play_audio(a_click)

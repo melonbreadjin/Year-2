@@ -1865,7 +1865,7 @@ position = Vector2( 591, 527 )
 position = Vector2( 351, 320 )
 scale = Vector2( 0.25, 0.25 )
 z_index = 1
-texture = ExtResource( 20 )
+texture = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
 }

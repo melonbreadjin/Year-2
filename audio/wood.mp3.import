@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/wood.mp3-f71c2a35b40444d998e560cdeddcaeb5.mp3str"
+
+[deps]
+
+source_file="res://audio/wood.mp3"
+dest_files=[ "res://.import/wood.mp3-f71c2a35b40444d998e560cdeddcaeb5.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

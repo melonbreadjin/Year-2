@@ -1,4 +1,4 @@
-[gd_scene load_steps=158 format=2]
+[gd_scene load_steps=159 format=2]
 
 [ext_resource path="res://addons/rmsmartshape/vertex_properties.gd" type="Script" id=1]
 [ext_resource path="res://addons/rmsmartshape/shapes/point_array.gd" type="Script" id=2]
@@ -735,6 +735,9 @@ b = Vector2( 0, 2400 )
 [sub_resource type="CircleShape2D" id=101]
 radius = 500.0
 
+[sub_resource type="SegmentShape2D" id=357]
+b = Vector2( 2000, 0 )
+
 [sub_resource type="AnimationNodeAnimation" id=264]
 animation = "hop"
 
@@ -1376,6 +1379,7 @@ margin_left = -40.0
 margin_top = -40.0
 
 [node name="MainMenu" type="Panel" parent="UI"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -1865,7 +1869,7 @@ position = Vector2( 591, 527 )
 position = Vector2( 351, 320 )
 scale = Vector2( 0.25, 0.25 )
 z_index = 1
-texture = ExtResource( 7 )
+texture = ExtResource( 30 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -1885,6 +1889,9 @@ disabled = true
 [node name="A" type="CollisionShape2D" parent="Player/Area"]
 shape = SubResource( 101 )
 disabled = true
+
+[node name="F" type="CollisionShape2D" parent="Player/Area"]
+shape = SubResource( 357 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Player"]
 tree_root = SubResource( 260 )

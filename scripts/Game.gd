@@ -133,12 +133,15 @@ func on_sgn_highlight_start(card : Array) -> void:
 		$Player/Area/H.disabled = false
 	elif card[1] == Globals.target_type.LINE_VERTICAL:
 		$Player/Area/V.disabled = false
+	elif card[1] == Globals.target_type.LINE_FRONT:
+		$Player/Area/F.disabled = false
 	elif card[1] == Globals.target_type.AREA_3x3:
 		$Player/Area/A.disabled = false
 		
 func on_sgn_highlight_end() -> void:
 		$Player/Area/H.disabled = true
 		$Player/Area/V.disabled = true
+		$Player/Area/F.disabled = true
 		$Player/Area/A.disabled = true
 
 func _on_Area_body_entered(body):
@@ -170,6 +173,8 @@ func on_sgn_selection(cards : Array, selected_card : Array) -> void:
 		player_state_machine.travel("swing_AOE")
 	else:
 		player_state_machine.travel("swing_H")
+	
+	yield(get_tree().create_timer(0.125), "timeout")
 	
 	for body in bodies:
 		if selected_card[2] == Globals.piece_type.GRASS:
@@ -222,6 +227,7 @@ func _input(event : InputEvent) -> void:
 			player_state_machine.travel("hop")
 		else:
 			player_direction = Vector2.UP
+			$Player/Area/F.rotation_degrees = -90
 		
 		player.flip_h = true
 	elif event.is_action_pressed("player_left") and player_pos.x - 1 >= 0:
@@ -233,6 +239,7 @@ func _input(event : InputEvent) -> void:
 			player_state_machine.travel("hop")
 		else:
 			player_direction = Vector2.LEFT
+			$Player/Area/F.rotation_degrees = 180
 		
 		player.flip_h = true
 	elif event.is_action_pressed("player_down") and player_pos.y + 1 < GRID_SIZE.y:
@@ -244,6 +251,7 @@ func _input(event : InputEvent) -> void:
 			player_state_machine.travel("hop")
 		else:
 			player_direction = Vector2.DOWN
+			$Player/Area/F.rotation_degrees = 90
 		
 		player.flip_h = false
 	elif event.is_action_pressed("player_right") and player_pos.x + 1 < GRID_SIZE.x:
@@ -255,6 +263,7 @@ func _input(event : InputEvent) -> void:
 			player_state_machine.travel("hop")
 		else:
 			player_direction = Vector2.RIGHT
+			$Player/Area/F.rotation_degrees = 0
 		
 		player.flip_h = false
 	

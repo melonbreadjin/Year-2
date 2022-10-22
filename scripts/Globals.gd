@@ -27,6 +27,7 @@ var piece_ref = preload("res://scene/Piece.tscn")
 enum target_type{
 	LINE_HORIZONTAL,
 	LINE_VERTICAL,
+	LINE_FRONT,
 	AREA_3x3
 }
 
@@ -37,6 +38,18 @@ enum piece_type{
 }
 
 var arr_cards : Dictionary = {
+	"front_grass" : ["scythe", target_type.LINE_FRONT, piece_type.GRASS],
+	"front_rock" : ["pick", target_type.LINE_FRONT, piece_type.ROCK],
+	"front_wood" : ["axe", target_type.LINE_FRONT, piece_type.WOOD]
+}
+
+var arr_deck : Dictionary = {
+	"front_grass" : ["scythe", target_type.LINE_FRONT, piece_type.GRASS],
+	"front_rock" : ["pick", target_type.LINE_FRONT, piece_type.ROCK],
+	"front_wood" : ["axe", target_type.LINE_FRONT, piece_type.WOOD]
+}
+
+var arr_cards_legacy : Dictionary = {
 	"3x3_grass" : ["3x3 scythe", target_type.AREA_3x3, piece_type.GRASS],
 	"3x3_rock" : ["3x3 pick", target_type.AREA_3x3, piece_type.ROCK],
 	"3x3_wood" : ["3x3 axe", target_type.AREA_3x3, piece_type.WOOD],
@@ -48,7 +61,7 @@ var arr_cards : Dictionary = {
 	"3x7_wood" : ["vertical axe", target_type.LINE_VERTICAL, piece_type.WOOD]
 }
 
-var arr_deck : Dictionary = {
+var arr_deck_legacy : Dictionary = {
 	"3x3_grass" : ["3x3 scythe", target_type.AREA_3x3, piece_type.GRASS],
 	"3x3_rock" : ["3x3 pick", target_type.AREA_3x3, piece_type.ROCK],
 	"3x3_wood" : ["3x3 axe", target_type.AREA_3x3, piece_type.WOOD],

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://scripts/Piece.gd" type="Script" id=1]
 [ext_resource path="res://assets/grass0002.png" type="Texture" id=2]
@@ -202,9 +202,6 @@ animation = "grass_break"
 [sub_resource type="AnimationNodeAnimation" id=6]
 animation = "highlighted"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
-animation = "idle"
-
 [sub_resource type="AnimationNodeAnimation" id=7]
 animation = "idle"
 
@@ -224,39 +221,30 @@ animation = "wood_break"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=20]
-switch_mode = 2
-auto_advance = true
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=21]
-switch_mode = 2
-auto_advance = true
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
-switch_mode = 2
-auto_advance = true
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
 
 [sub_resource type="AnimationNodeStateMachine" id=2]
 states/grass_break/node = SubResource( 13 )
 states/grass_break/position = Vector2( 453, 54 )
 states/highlighted/node = SubResource( 6 )
-states/highlighted/position = Vector2( 182, 152 )
+states/highlighted/position = Vector2( 182, 188 )
 states/idle/node = SubResource( 7 )
 states/idle/position = Vector2( 182, 54 )
-"states/idle 2/node" = SubResource( 19 )
-"states/idle 2/position" = Vector2( 673, 122 )
 states/rock_break/node = SubResource( 14 )
 states/rock_break/position = Vector2( 453, 122 )
 states/wood_break/node = SubResource( 15 )
 states/wood_break/position = Vector2( 453, 188 )
-transitions = [ "idle", "highlighted", SubResource( 8 ), "highlighted", "idle", SubResource( 9 ), "highlighted", "grass_break", SubResource( 16 ), "highlighted", "rock_break", SubResource( 17 ), "highlighted", "wood_break", SubResource( 18 ), "grass_break", "idle 2", SubResource( 20 ), "rock_break", "idle 2", SubResource( 21 ), "wood_break", "idle 2", SubResource( 22 ) ]
+transitions = [ "idle", "highlighted", SubResource( 8 ), "highlighted", "idle", SubResource( 9 ), "highlighted", "grass_break", SubResource( 16 ), "highlighted", "rock_break", SubResource( 17 ), "highlighted", "wood_break", SubResource( 18 ), "idle", "grass_break", SubResource( 23 ), "idle", "rock_break", SubResource( 24 ), "idle", "wood_break", SubResource( 25 ) ]
 start_node = "idle"
-end_node = "idle 2"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=3]
 
 [node name="Piece" type="Sprite"]
-texture = ExtResource( 7 )
+texture = ExtResource( 5 )
 script = ExtResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

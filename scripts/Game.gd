@@ -13,9 +13,11 @@ export(Array, Array, float) var position
 const GRID_SIZE : Vector2 = Vector2(7, 7)
 
 var player : Node2D
+
 var player_pos : Vector2
-var pivot_pos : Vector2
+var player_direction : Vector2
 var target_pos : Vector2
+
 var board : Array
 var turn : int
 var tools_used : int
@@ -75,6 +77,7 @@ func init_board(board_seed : int) -> void:
 	seed(board_seed)
 	board_set("player", Vector2(3, 3))
 	player_pos = Vector2(3, 3)
+	player_direction = Vector2.RIGHT
 	
 	for y in range(GRID_SIZE.y):
 		board.append([])
@@ -150,7 +153,8 @@ func _on_Area_body_exited(body):
 	sprite.scale = Vector2(0.25, 0.25)
 	
 	var state_machine = sprite.get_node("AnimationTree")["parameters/playback"]
-	yield(get_tree().create_timer(0.1), "timeout")
+	
+	yield(get_tree().create_timer(0.01), "timeout")
 	if state_machine.get_current_node() == "highlighted":
 		state_machine.travel("idle")
 
@@ -210,29 +214,49 @@ func _input(event : InputEvent) -> void:
 		return
 	
 	if event.is_action_pressed("player_up") and player_pos.y - 1 >= 0:
-		player_pos.y -= 1
-		Globals.emit_signal("sgn_update_turn", 1)
+		if player_direction == Vector2.UP:
+			player_pos.y -= 1
+			Globals.emit_signal("sgn_update_turn", 1)
+			
+			play_audio(a_move)
+			player_state_machine.travel("hop")
+		else:
+			player_direction = Vector2.UP
+		
 		player.flip_h = true
-		play_audio(a_move)
-		player_state_machine.travel("hop")
 	elif event.is_action_pressed("player_left") and player_pos.x - 1 >= 0:
-		player_pos.x -= 1
-		Globals.emit_signal("sgn_update_turn", 1)
+		if player_direction == Vector2.LEFT:
+			player_pos.x -= 1
+			Globals.emit_signal("sgn_update_turn", 1)
+			
+			play_audio(a_move)
+			player_state_machine.travel("hop")
+		else:
+			player_direction = Vector2.LEFT
+		
 		player.flip_h = true
-		play_audio(a_move)
-		player_state_machine.travel("hop")
 	elif event.is_action_pressed("player_down") and player_pos.y + 1 < GRID_SIZE.y:
-		player_pos.y += 1
-		Globals.emit_signal("sgn_update_turn", 1)
+		if player_direction == Vector2.DOWN:
+			player_pos.y += 1
+			Globals.emit_signal("sgn_update_turn", 1)
+			
+			play_audio(a_move)
+			player_state_machine.travel("hop")
+		else:
+			player_direction = Vector2.DOWN
+		
 		player.flip_h = false
-		play_audio(a_move)
-		player_state_machine.travel("hop")
 	elif event.is_action_pressed("player_right") and player_pos.x + 1 < GRID_SIZE.x:
-		player_pos.x += 1
-		Globals.emit_signal("sgn_update_turn", 1)
+		if player_direction == Vector2.RIGHT:
+			player_pos.x += 1
+			Globals.emit_signal("sgn_update_turn", 1)
+			
+			play_audio(a_move)
+			player_state_machine.travel("hop")
+		else:
+			player_direction = Vector2.RIGHT
+		
 		player.flip_h = false
-		play_audio(a_move)
-		player_state_machine.travel("hop")
 	
 	board_set("player", player_pos)
 

@@ -1,4 +1,8 @@
 # Year 2
+<p align="center">
+  <img src="https://img.itch.zone/aW1hZ2UvMTUxMDMxMi84OTE1MDg1LnBuZw==/347x500/aY6dVi.png">
+  <img src="https://img.itch.zone/aW1hZ2UvMTUxMDMxMi84OTE1MDg3LnBuZw==/347x500/ukDhTr.png">
+</p>
 
 A casual puzzle game about spring cleaning. Originally a submission to [Spring 2D Jam 2022](https://itch.io/jam/spring-2d-jam-2022/rate/1510312). Will release this sometime in the future, probably next spring.
 

@@ -47,6 +47,8 @@ func on_sgn_draw_cards(cards : Array) -> void:
 			get_node("Card%d/Icon_D" % idx).texture = Globals.icon_h
 		elif cards[idx][1] == Globals.target_type.LINE_VERTICAL:
 			get_node("Card%d/Icon_D" % idx).texture = Globals.icon_v
+		elif cards[idx][1] == Globals.target_type.LINE_FRONT:
+			get_node("Card%d/Icon_D" % idx).texture = null
 			
 		if cards[idx][2] == Globals.piece_type.GRASS:
 			get_node("Card%d/Icon_T" % idx).texture = Globals.icon_scythe

@@ -38,12 +38,18 @@ enum piece_type{
 }
 
 var arr_cards : Dictionary = {
+	"3x3_grass" : ["aoe scythe", target_type.AREA_3x3, piece_type.GRASS],
+	"3x3_rock" : ["aoe pick", target_type.AREA_3x3, piece_type.ROCK],
+	"3x3_wood" : ["aoe axe", target_type.AREA_3x3, piece_type.WOOD],
 	"front_grass" : ["scythe", target_type.LINE_FRONT, piece_type.GRASS],
 	"front_rock" : ["pick", target_type.LINE_FRONT, piece_type.ROCK],
 	"front_wood" : ["axe", target_type.LINE_FRONT, piece_type.WOOD]
 }
 
 var arr_deck : Dictionary = {
+	"3x3_grass" : ["aoe scythe", target_type.AREA_3x3, piece_type.GRASS],
+	"3x3_rock" : ["aoe pick", target_type.AREA_3x3, piece_type.ROCK],
+	"3x3_wood" : ["aoe axe", target_type.AREA_3x3, piece_type.WOOD],
 	"front_grass" : ["scythe", target_type.LINE_FRONT, piece_type.GRASS],
 	"front_rock" : ["pick", target_type.LINE_FRONT, piece_type.ROCK],
 	"front_wood" : ["axe", target_type.LINE_FRONT, piece_type.WOOD]

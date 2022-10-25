@@ -340,7 +340,7 @@ func _on_CButton_mouse_entered():
 	$UI/MainMenu/C/Label.margin_left = 18
 	$UI/MainMenu/C/Label.margin_right = -18
 	
-	$UI/MainMenu/C/Label.text = "🐔🐔🐔🐔🐔🐔🐔v1.0 POST JAM\nMade by melonbreadjin\n\nFont : RobGraves\nby Kevin Richey"
+	$UI/MainMenu/C/Label.text = "%s\nMade by melonbreadjin\n\nFont : RobGraves\nby Kevin Richey" % Globals.GAME_VERSION
 
 
 func _on_Button_W_pressed():

@@ -1,5 +1,7 @@
 extends Node
 
+const GAME_VERSION = "v1.0.07"
+
 signal sgn_update_turn
 signal sgn_update_tools
 signal sgn_draw_cards

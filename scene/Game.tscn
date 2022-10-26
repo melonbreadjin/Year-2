@@ -1,4 +1,4 @@
-[gd_scene load_steps=159 format=2]
+[gd_scene load_steps=160 format=2]
 
 [ext_resource path="res://addons/rmsmartshape/vertex_properties.gd" type="Script" id=1]
 [ext_resource path="res://addons/rmsmartshape/shapes/point_array.gd" type="Script" id=2]
@@ -31,6 +31,7 @@
 [ext_resource path="res://assets/player_swing_H0002.png" type="Texture" id=29]
 [ext_resource path="res://assets/player_swing_H0000.png" type="Texture" id=30]
 [ext_resource path="res://assets/player_swing_H0001.png" type="Texture" id=31]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=32]
 
 [sub_resource type="StyleBoxFlat" id=102]
 bg_color = Color( 0.592157, 0.780392, 0.658824, 0.905882 )
@@ -1870,6 +1871,7 @@ position = Vector2( 351, 320 )
 scale = Vector2( 0.25, 0.25 )
 z_index = 1
 texture = ExtResource( 7 )
+script = ExtResource( 32 )
 __meta__ = {
 "_edit_group_": true
 }

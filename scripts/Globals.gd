@@ -1,7 +1,11 @@
 extends Node
 
 const GAME_VERSION = "v1.0.07"
+const GRID_SIZE : Vector2 = Vector2(7, 7)
 
+signal sgn_play_sfx
+
+signal sgn_update_player_pos
 signal sgn_update_turn
 signal sgn_update_tools
 signal sgn_draw_cards
@@ -25,6 +29,14 @@ var icon_axe = preload("res://assets/icon_axe.png")
 var icon_scythe = preload("res://assets/icon_scythe.png")
 
 var piece_ref = preload("res://scene/Piece.tscn")
+
+var a_clear = preload("res://audio/hitHurt.wav")
+var a_move = preload("res://audio/jump.wav")
+var a_click = preload("res://audio/pickupCoin.wav")
+
+var a_grass = preload("res://audio/grass.mp3")
+var a_wood = preload("res://audio/wood.mp3")
+var a_rock = preload("res://audio/rock.mp3")
 
 enum target_type{
 	LINE_HORIZONTAL,

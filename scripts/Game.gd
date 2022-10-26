@@ -1,21 +1,10 @@
 extends Node
 
-onready var a_clear = preload("res://audio/hitHurt.wav")
-onready var a_move = preload("res://audio/jump.wav")
-onready var a_click = preload("res://audio/pickupCoin.wav")
-
-onready var a_grass = preload("res://audio/grass.mp3")
-onready var a_wood = preload("res://audio/wood.mp3")
-onready var a_rock = preload("res://audio/rock.mp3")
-
 export(Array, Array, float) var position
-
-const GRID_SIZE : Vector2 = Vector2(7, 7)
 
 var player : Node2D
 
 var player_pos : Vector2
-var player_direction : Vector2
 var target_pos : Vector2
 
 var board : Array
@@ -42,11 +31,13 @@ func _ready() -> void:
 	is_ingame = false
 	is_mainmenu_visible = true
 	
+	_sgn = Globals.connect("sgn_update_player_pos", self, "on_sgn_update_player_pos")
 	_sgn = Globals.connect("sgn_update_turn", self, "on_sgn_update_turn")
 	_sgn = Globals.connect("sgn_update_tools", self, "on_sgn_update_tools")
 	_sgn = Globals.connect("sgn_highlight_start", self, "on_sgn_highlight_start")
 	_sgn = Globals.connect("sgn_highlight_end", self, "on_sgn_highlight_end")
 	_sgn = Globals.connect("sgn_selection", self, "on_sgn_selection")
+	_sgn = Globals.connect("sgn_play_sfx", self, "on_sgn_play_sfx")
 	
 	player = $Player
 	player_state_machine = player.get_node("AnimationTree")["parameters/playback"]
@@ -77,12 +68,11 @@ func init_board(board_seed : int) -> void:
 	seed(board_seed)
 	board_set("player", Vector2(3, 3))
 	player_pos = Vector2(3, 3)
-	player_direction = Vector2.RIGHT
 	
-	for y in range(GRID_SIZE.y):
+	for y in range(Globals.GRID_SIZE.y):
 		board.append([])
 		
-		for x in range(GRID_SIZE.x):
+		for x in range(Globals.GRID_SIZE.x):
 			var piece_inst : Piece = Globals.piece_ref.instance()
 			
 			piece_inst.position = get_node("Grid/P/%02d" % [y * 7 + x]).position
@@ -178,17 +168,17 @@ func on_sgn_selection(cards : Array, selected_card : Array) -> void:
 	
 	for body in bodies:
 		if selected_card[2] == Globals.piece_type.GRASS:
-			play_audio(a_grass)
+			play_audio(Globals.a_grass)
 			var state_machine = body.get_parent().get_node("AnimationTree")["parameters/playback"]
 			state_machine.travel("grass_break")
 			body.get_parent().get_node("DespawnTimer").start()
 		elif selected_card[2] == Globals.piece_type.WOOD:
-			play_audio(a_wood)
+			play_audio(Globals.a_wood)
 			var state_machine = body.get_parent().get_node("AnimationTree")["parameters/playback"]
 			state_machine.travel("wood_break")
 			body.get_parent().get_node("DespawnTimer").start()
 		elif selected_card[2] == Globals.piece_type.ROCK:
-			play_audio(a_rock)
+			play_audio(Globals.a_rock)
 			var state_machine = body.get_parent().get_node("AnimationTree")["parameters/playback"]
 			state_machine.travel("rock_break")
 			body.get_parent().get_node("DespawnTimer").start()
@@ -196,7 +186,7 @@ func on_sgn_selection(cards : Array, selected_card : Array) -> void:
 		yield(get_tree().create_timer(0.135), "timeout")
 	
 	if bodies.size() == 0:
-		play_audio(a_click)
+		play_audio(Globals.a_click)
 	
 	yield(get_tree().create_timer(0.5), "timeout")
 	if $Pieces.get_child_count() == 0:
@@ -217,57 +207,9 @@ func _input(event : InputEvent) -> void:
 	
 	if not is_ingame:
 		return
-	
-	if event.is_action_pressed("player_up") and player_pos.y - 1 >= 0:
-		if player_direction == Vector2.UP:
-			player_pos.y -= 1
-			Globals.emit_signal("sgn_update_turn", 1)
-			
-			play_audio(a_move)
-			player_state_machine.travel("hop")
-		else:
-			player_direction = Vector2.UP
-			$Player/Area/F.rotation_degrees = -90
-		
-		player.flip_h = true
-	elif event.is_action_pressed("player_left") and player_pos.x - 1 >= 0:
-		if player_direction == Vector2.LEFT:
-			player_pos.x -= 1
-			Globals.emit_signal("sgn_update_turn", 1)
-			
-			play_audio(a_move)
-			player_state_machine.travel("hop")
-		else:
-			player_direction = Vector2.LEFT
-			$Player/Area/F.rotation_degrees = 180
-		
-		player.flip_h = true
-	elif event.is_action_pressed("player_down") and player_pos.y + 1 < GRID_SIZE.y:
-		if player_direction == Vector2.DOWN:
-			player_pos.y += 1
-			Globals.emit_signal("sgn_update_turn", 1)
-			
-			play_audio(a_move)
-			player_state_machine.travel("hop")
-		else:
-			player_direction = Vector2.DOWN
-			$Player/Area/F.rotation_degrees = 90
-		
-		player.flip_h = false
-	elif event.is_action_pressed("player_right") and player_pos.x + 1 < GRID_SIZE.x:
-		if player_direction == Vector2.RIGHT:
-			player_pos.x += 1
-			Globals.emit_signal("sgn_update_turn", 1)
-			
-			play_audio(a_move)
-			player_state_machine.travel("hop")
-		else:
-			player_direction = Vector2.RIGHT
-			$Player/Area/F.rotation_degrees = 0
-		
-		player.flip_h = false
-	
-	board_set("player", player_pos)
+
+func on_sgn_play_sfx(audio) -> void:
+	play_audio(audio)
 
 func play_audio(audio) -> void:
 	if not $SFX.playing:
@@ -288,7 +230,7 @@ func _on_MusicIntro_finished():
 	$Music.play()
 
 func _on_RetryButton_pressed():
-	play_audio(a_click)
+	play_audio(Globals.a_click)
 	$GameoverDialog/NinePatchRect.visible = false
 	$GameoverDialog/BGPanel.visible = false
 	new_game(daily_game)
@@ -313,17 +255,17 @@ func _process(_dt : float):
 		$UI/MainMenu.visible = true
 
 func _on_DailyButton_pressed():
-	play_audio(a_click)
+	play_audio(Globals.a_click)
 	is_mainmenu_visible = false
 	new_game(true)
 
 func _on_RandomButton_pressed():
-	play_audio(a_click)
+	play_audio(Globals.a_click)
 	is_mainmenu_visible = false
 	new_game(false)
 
 func _on_MenuButton_pressed():
-	play_audio(a_click)
+	play_audio(Globals.a_click)
 	$GameoverDialog/NinePatchRect.visible = false
 	$GameoverDialog/BGPanel.visible = false
 	is_mainmenu_visible = true
@@ -348,7 +290,7 @@ func _on_Button_W_pressed():
 		player_pos.y -= 1
 		Globals.emit_signal("sgn_update_turn", 1)
 		player.flip_h = true
-		play_audio(a_move)
+		play_audio(Globals.a_move)
 		player_state_machine.travel("hop")
 	
 		board_set("player", player_pos)
@@ -359,29 +301,33 @@ func _on_Button_A_pressed():
 		player_pos.x -= 1
 		Globals.emit_signal("sgn_update_turn", 1)
 		player.flip_h = true
-		play_audio(a_move)
+		play_audio(Globals.a_move)
 		player_state_machine.travel("hop")
 		
 		board_set("player", player_pos)
 
 
 func _on_Button_S_pressed():
-	if player_pos.y + 1 < GRID_SIZE.y:
+	if player_pos.y + 1 < Globals.GRID_SIZE.y:
 		player_pos.y += 1
 		Globals.emit_signal("sgn_update_turn", 1)
 		player.flip_h = false
-		play_audio(a_move)
+		play_audio(Globals.a_move)
 		player_state_machine.travel("hop")
 		
 		board_set("player", player_pos)
 
 
 func _on_Button_D_pressed():
-	if player_pos.x + 1 < GRID_SIZE.x:
+	if player_pos.x + 1 < Globals.GRID_SIZE.x:
 		player_pos.x += 1
 		Globals.emit_signal("sgn_update_turn", 1)
 		player.flip_h = false
-		play_audio(a_move)
+		play_audio(Globals.a_move)
 		player_state_machine.travel("hop")
 		
 		board_set("player", player_pos)
+
+func on_sgn_update_player_pos(pos):
+	player_pos = pos
+	board_set("player", player_pos)

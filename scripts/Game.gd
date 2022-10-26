@@ -38,13 +38,16 @@ func _ready() -> void:
 	_sgn = Globals.connect("sgn_highlight_end", self, "on_sgn_highlight_end")
 	_sgn = Globals.connect("sgn_selection", self, "on_sgn_selection")
 	_sgn = Globals.connect("sgn_play_sfx", self, "on_sgn_play_sfx")
-	
-	player = $Player
-	player_state_machine = player.get_node("AnimationTree")["parameters/playback"]
 
 func new_game(is_daily : bool) -> void:
 	if is_ingame:
 		return
+	
+	var player_inst = Globals.scene_player.instance()
+	add_child(player_inst)
+	
+	player = $Player
+	player_state_machine = player.get_node("AnimationTree")["parameters/playback"]
 	
 	turn = 0
 	tools_used = 0
@@ -134,23 +137,6 @@ func on_sgn_highlight_end() -> void:
 		$Player/Area/V.disabled = true
 		$Player/Area/F.disabled = true
 		$Player/Area/A.disabled = true
-
-func _on_Area_body_entered(body):
-	var sprite : Node = body.get_parent()
-	sprite.scale = Vector2(0.3, 0.3)
-	
-	var state_machine = sprite.get_node("AnimationTree")["parameters/playback"]
-	state_machine.travel("highlighted")
-
-func _on_Area_body_exited(body):
-	var sprite : Node = body.get_parent()
-	sprite.scale = Vector2(0.25, 0.25)
-	
-	var state_machine = sprite.get_node("AnimationTree")["parameters/playback"]
-	
-	yield(get_tree().create_timer(0.01), "timeout")
-	if state_machine.get_current_node() == "highlighted":
-		state_machine.travel("idle")
 
 func on_sgn_selection(cards : Array, selected_card : Array) -> void:
 	if not is_ingame:

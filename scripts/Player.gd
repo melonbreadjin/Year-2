@@ -95,3 +95,20 @@ func _unhandled_key_input(event : InputEventKey) -> void:
 			$Area/F.rotation_degrees = 0
 		
 		flip_h = false
+
+func _on_Area_body_entered(body):
+	var sprite : Node = body.get_parent()
+	sprite.scale = Vector2(0.3, 0.3)
+	
+	var state_machine = sprite.get_node("AnimationTree")["parameters/playback"]
+	state_machine.travel("highlighted")
+
+func _on_Area_body_exited(body):
+	var sprite : Node = body.get_parent()
+	sprite.scale = Vector2(0.25, 0.25)
+	
+	var state_machine = sprite.get_node("AnimationTree")["parameters/playback"]
+	
+	yield(get_tree().create_timer(0.01), "timeout")
+	if state_machine.get_current_node() == "highlighted":
+		state_machine.travel("idle")

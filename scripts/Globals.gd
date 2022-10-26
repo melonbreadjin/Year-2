@@ -41,6 +41,8 @@ var a_grass = preload("res://audio/grass.mp3")
 var a_wood = preload("res://audio/wood.mp3")
 var a_rock = preload("res://audio/rock.mp3")
 
+var scene_player = preload("res://scene/Player.tscn")
+
 enum target_type{
 	LINE_HORIZONTAL,
 	LINE_VERTICAL,

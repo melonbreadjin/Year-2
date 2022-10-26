@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=2]
+[gd_scene load_steps=126 format=2]
 
 [ext_resource path="res://addons/rmsmartshape/vertex_properties.gd" type="Script" id=1]
 [ext_resource path="res://addons/rmsmartshape/shapes/point_array.gd" type="Script" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://addons/rmsmartshape/shapes/shape_closed.gd" type="Script" id=4]
 [ext_resource path="res://assets/brush.png" type="Texture" id=5]
 [ext_resource path="res://addons/rmsmartshape/shapes/shape_open.gd" type="Script" id=6]
-[ext_resource path="res://assets/player.png" type="Texture" id=7]
 [ext_resource path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" type="Script" id=8]
 [ext_resource path="res://addons/rmsmartshape/normal_range.gd" type="Script" id=9]
 [ext_resource path="res://addons/rmsmartshape/materials/edge_material.gd" type="Script" id=10]
@@ -19,19 +18,6 @@
 [ext_resource path="res://audio/year2themeloop.wav" type="AudioStream" id=17]
 [ext_resource path="res://assets/logo_alt.png" type="Texture" id=18]
 [ext_resource path="res://assets/bounds_alt.png" type="Texture" id=19]
-[ext_resource path="res://assets/player_hop0001.png" type="Texture" id=20]
-[ext_resource path="res://assets/player_hop0002.png" type="Texture" id=21]
-[ext_resource path="res://assets/player_hop0003.png" type="Texture" id=22]
-[ext_resource path="res://assets/player_hop0005.png" type="Texture" id=23]
-[ext_resource path="res://assets/player_swing_AOE0000.png" type="Texture" id=24]
-[ext_resource path="res://assets/player_swing_AOE0001.png" type="Texture" id=25]
-[ext_resource path="res://assets/player_swing_AOE0002.png" type="Texture" id=26]
-[ext_resource path="res://assets/player_swing_AOE0003.png" type="Texture" id=27]
-[ext_resource path="res://assets/player_swing_H0003.png" type="Texture" id=28]
-[ext_resource path="res://assets/player_swing_H0002.png" type="Texture" id=29]
-[ext_resource path="res://assets/player_swing_H0000.png" type="Texture" id=30]
-[ext_resource path="res://assets/player_swing_H0001.png" type="Texture" id=31]
-[ext_resource path="res://scripts/Player.gd" type="Script" id=32]
 
 [sub_resource type="StyleBoxFlat" id=102]
 bg_color = Color( 0.592157, 0.780392, 0.658824, 0.905882 )
@@ -724,130 +710,6 @@ _point_order = [ 0, 1 ]
 _constraints = {
 }
 _next_key = 0
-
-[sub_resource type="SegmentShape2D" id=99]
-a = Vector2( -2400, 0 )
-b = Vector2( 2400, 0 )
-
-[sub_resource type="SegmentShape2D" id=100]
-a = Vector2( 0, -2400 )
-b = Vector2( 0, 2400 )
-
-[sub_resource type="CircleShape2D" id=101]
-radius = 500.0
-
-[sub_resource type="SegmentShape2D" id=357]
-b = Vector2( 2000, 0 )
-
-[sub_resource type="AnimationNodeAnimation" id=264]
-animation = "hop"
-
-[sub_resource type="AnimationNodeAnimation" id=265]
-animation = "idle"
-
-[sub_resource type="AnimationNodeAnimation" id=270]
-animation = "swing_AOE"
-
-[sub_resource type="AnimationNodeAnimation" id=271]
-animation = "swing_H"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=266]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=267]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=272]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=273]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=274]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=275]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachine" id=260]
-states/hop/node = SubResource( 264 )
-states/hop/position = Vector2( 534, 77 )
-states/idle/node = SubResource( 265 )
-states/idle/position = Vector2( 273, 77 )
-states/swing_AOE/node = SubResource( 270 )
-states/swing_AOE/position = Vector2( 161, 177 )
-states/swing_H/node = SubResource( 271 )
-states/swing_H/position = Vector2( 389, 177 )
-transitions = [ "idle", "hop", SubResource( 266 ), "hop", "idle", SubResource( 267 ), "idle", "swing_AOE", SubResource( 272 ), "swing_AOE", "idle", SubResource( 273 ), "idle", "swing_H", SubResource( 274 ), "swing_H", "idle", SubResource( 275 ) ]
-start_node = "idle"
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=261]
-
-[sub_resource type="Animation" id=263]
-resource_name = "hop"
-length = 0.25
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.03, 0.09, 0.19, 0.23 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 7 ) ]
-}
-
-[sub_resource type="Animation" id=262]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 7 ) ]
-}
-
-[sub_resource type="Animation" id=268]
-resource_name = "swing_AOE"
-length = 0.25
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.03, 0.1, 0.15, 0.23 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 7 ) ]
-}
-
-[sub_resource type="Animation" id=269]
-resource_name = "swing_H"
-length = 0.25
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.03, 0.1, 0.14, 0.23 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ ExtResource( 30 ), ExtResource( 31 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 7 ) ]
-}
 
 [node name="Game" type="Node"]
 script = ExtResource( 13 )
@@ -1866,48 +1728,6 @@ position = Vector2( 510, 525 )
 [node name="48" type="Position2D" parent="Grid/P"]
 position = Vector2( 591, 527 )
 
-[node name="Player" type="Sprite" parent="."]
-position = Vector2( 351, 320 )
-scale = Vector2( 0.25, 0.25 )
-z_index = 1
-texture = ExtResource( 7 )
-script = ExtResource( 32 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Area" type="Area2D" parent="Player"]
-collision_layer = 0
-collision_mask = 0
-
-[node name="H" type="CollisionShape2D" parent="Player/Area"]
-shape = SubResource( 99 )
-disabled = true
-
-[node name="V" type="CollisionShape2D" parent="Player/Area"]
-shape = SubResource( 100 )
-disabled = true
-
-[node name="A" type="CollisionShape2D" parent="Player/Area"]
-shape = SubResource( 101 )
-disabled = true
-
-[node name="F" type="CollisionShape2D" parent="Player/Area"]
-shape = SubResource( 357 )
-disabled = true
-
-[node name="AnimationTree" type="AnimationTree" parent="Player"]
-tree_root = SubResource( 260 )
-anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource( 261 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
-anims/hop = SubResource( 263 )
-anims/idle = SubResource( 262 )
-anims/swing_AOE = SubResource( 268 )
-anims/swing_H = SubResource( 269 )
-
 [node name="Pieces" type="Node" parent="."]
 
 [node name="Pointer" type="Position2D" parent="."]
@@ -1948,6 +1768,4 @@ stream = ExtResource( 17 )
 [connection signal="mouse_exited" from="UI/MainMenu/Random/RandomButton" to="UI" method="_on_RandomButton_mouse_exited"]
 [connection signal="pressed" from="UI/MainMenu/Random/RandomButton" to="." method="_on_RandomButton_pressed"]
 [connection signal="mouse_entered" from="UI/MainMenu/C/CButton" to="." method="_on_CButton_mouse_entered"]
-[connection signal="body_entered" from="Player/Area" to="." method="_on_Area_body_entered"]
-[connection signal="body_exited" from="Player/Area" to="." method="_on_Area_body_exited"]
 [connection signal="finished" from="MusicIntro" to="." method="_on_MusicIntro_finished"]

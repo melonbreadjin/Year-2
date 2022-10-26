@@ -3,15 +3,34 @@ extends Sprite
 var player_pos : Vector2
 var player_direction : Vector2
 
+var is_ingame : bool = false
+
 var player_state_machine
 
 func _ready():
+	player_state_machine = get_node("AnimationTree")["parameters/playback"]
+
+	var _sgn = Globals.connect("sgn_new_game", self, "on_sgn_new_game")
+	_sgn = Globals.connect("sgn_end_game", self, "on_sgn_end_game")
+
+func on_sgn_new_game() -> void:
 	player_pos = Vector2(3, 3)
 	player_direction = Vector2.RIGHT
 	
-	player_state_machine = get_node("AnimationTree")["parameters/playback"]
+	Globals.emit_signal("sgn_update_player_pos", player_pos)
+	
+	$Area/F.rotation_degrees = 0
+	flip_h = false
+	
+	is_ingame = true
+
+func on_sgn_end_game() -> void:
+	is_ingame = false
 
 func _unhandled_key_input(event : InputEventKey) -> void:
+	if not is_ingame:
+		return
+	
 	if event.is_action_pressed("player_up"):
 		if player_pos.y - 1 < 0:
 			return

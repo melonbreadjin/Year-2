@@ -63,11 +63,12 @@ func new_game(is_daily : bool) -> void:
 	else:
 		randomize()
 		init_board(randi())
+	
+	Globals.emit_signal("sgn_new_game")
 
 func init_board(board_seed : int) -> void:
 	seed(board_seed)
 	board_set("player", Vector2(3, 3))
-	player_pos = Vector2(3, 3)
 	
 	for y in range(Globals.GRID_SIZE.y):
 		board.append([])
@@ -217,6 +218,7 @@ func play_audio(audio) -> void:
 		$SFX.play()
 
 func game_over() -> void:
+	Globals.emit_signal("sgn_end_game")
 	is_ingame = false
 	
 	$UI/TurnCountLabel.visible = false

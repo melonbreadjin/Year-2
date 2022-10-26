@@ -5,6 +5,9 @@ const GRID_SIZE : Vector2 = Vector2(7, 7)
 
 signal sgn_play_sfx
 
+signal sgn_new_game
+signal sgn_end_game
+
 signal sgn_update_player_pos
 signal sgn_update_turn
 signal sgn_update_tools
